@@ -11,7 +11,7 @@
     <script src="script.js"></script>
 </head>
 
-<body>
+<body onload="init()">
 
     <header>
         <nav class="navbar navbar-light bg-light">
@@ -26,33 +26,35 @@
             <img src="img/education_background.jpg" class="card-img-top" alt="Background">
             <div class="card-body">
 
+                <h5 class="card-title" id="question">Frage</h5>
+
                 <div class="card mb-2">
-                    <div class="card-body">
+                    <div class="card-body" id="answer-1">
                         Antwort
                     </div>
                 </div>
 
                 <div class="card mb-2">
-                    <div class="card-body">
+                    <div class="card-body" id="answer-2">
                         Antwort
                     </div>
                 </div>
 
                 <div class="card mb-2">
-                    <div class="card-body">
+                    <div class="card-body" id="answer-3">
                         Antwort
                     </div>
                 </div>
 
                 <div class="card mb-2">
-                    <div class="card-body">
+                    <div class="card-body" id="answer-4">
                         Antwort
                     </div>
                 </div>
 
                 <div class="question-footer">
                     <div>
-                        <b>1</b> von <b>5</b> Fragen
+                        <b>1</b> von <b id="total-questions">5</b> Fragen
                     </div>
                     <button class="btn btn-primary">Nächste Frage</button>
                 </div>
