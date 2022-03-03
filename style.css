@@ -10,6 +10,11 @@ main {
     width: 30rem;
 }
 
+.quiz-answer-card:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
 .question-footer {
     display: flex;
     justify-content: space-between;

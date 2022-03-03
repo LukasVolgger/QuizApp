@@ -75,3 +75,11 @@ function showQuestion() {
     document.getElementById('answer-3').innerHTML = question.answer_3;
     document.getElementById('answer-4').innerHTML = question.answer_4;
 }
+
+function answer(selection) {
+    if (selection == questions[currentQuestion].right_answer) {
+        console.log('Right Answer');
+    } else {
+        console.log('Wrong Answer');
+    }
+}
