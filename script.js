@@ -86,3 +86,22 @@ function answer(selection) {
 
     document.getElementById('next-btn').disabled = false;
 }
+
+function nextQuestion() {
+    currentQuestion++;
+
+    document.getElementById('next-btn').disabled = true;
+    resetAnswerBtns();
+    showQuestion();
+}
+
+function resetAnswerBtns() {
+    document.getElementById('answer-1').parentNode.classList.remove('bg-danger');
+    document.getElementById('answer-1').parentNode.classList.remove('bg-success');
+    document.getElementById('answer-2').parentNode.classList.remove('bg-danger');
+    document.getElementById('answer-2').parentNode.classList.remove('bg-success');
+    document.getElementById('answer-3').parentNode.classList.remove('bg-danger');
+    document.getElementById('answer-3').parentNode.classList.remove('bg-success');
+    document.getElementById('answer-4').parentNode.classList.remove('bg-danger');
+    document.getElementById('answer-4').parentNode.classList.remove('bg-success');
+}
