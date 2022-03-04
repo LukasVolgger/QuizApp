@@ -78,8 +78,11 @@ function showQuestion() {
 
 function answer(selection) {
     if (selection == questions[currentQuestion].right_answer) {
-        console.log('Right Answer');
+        document.getElementById(`answer-${selection}`).parentNode.classList.add('bg-success');
     } else {
-        console.log('Wrong Answer');
+        document.getElementById(`answer-${selection}`).parentNode.classList.add('bg-danger');
+        document.getElementById(`answer-${questions[currentQuestion].right_answer}`).parentNode.classList.add('bg-success');
     }
+
+    document.getElementById('next-btn').disabled = false;
 }
