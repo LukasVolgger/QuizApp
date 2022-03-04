@@ -60,6 +60,7 @@ let questions = [
 
 let totalQuestions = questions.length;
 let currentQuestion = 0;
+let rightAnswers = 0;
 
 function init() {
     document.getElementById('total-questions').innerHTML = totalQuestions;
@@ -70,8 +71,11 @@ function showQuestion() {
     let question = questions[currentQuestion];
 
     if (currentQuestion >= totalQuestions) {
-        document.getElementById('endscreen').style = 'display: block;';
+        document.getElementById('end-screen').style = 'display: block;';
         document.getElementById('question-body').style = 'display: none;';
+
+        document.getElementById('right-answers').innerHTML = rightAnswers;
+        document.getElementById('amount-of-questions').innerHTML = totalQuestions;
     } else {
         document.getElementById('current-question').innerHTML = currentQuestion + 1;
 
@@ -86,6 +90,7 @@ function showQuestion() {
 function answer(selection) {
     if (selection == questions[currentQuestion].right_answer) {
         document.getElementById(`answer-${selection}`).parentNode.classList.add('bg-success');
+        rightAnswers++;
     } else {
         document.getElementById(`answer-${selection}`).parentNode.classList.add('bg-danger');
         document.getElementById(`answer-${questions[currentQuestion].right_answer}`).parentNode.classList.add('bg-success');

@@ -27,3 +27,7 @@ main {
 .bg-danger {
     color: white;
 }
+
+.text-center {
+    text-align: center;
+}
