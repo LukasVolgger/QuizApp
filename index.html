@@ -24,7 +24,10 @@
     <main>
         <div class="card quiz-card">
             <img src="img/education_background.jpg" class="card-img-top" alt="Background">
-            <div class="card-body">
+            <div id="endscreen" class="card-body" style="display: none;">
+                Quiz beendet!
+            </div>
+            <div id="question-body" class="card-body">
 
                 <h5 class="card-title" id="question">Frage</h5>
 
@@ -54,7 +57,7 @@
 
                 <div class="question-footer">
                     <div>
-                        <b>1</b> von <b id="total-questions">5</b> Fragen
+                        <b id="current-question">1</b> von <b id="total-questions">5</b> Fragen
                     </div>
                     <button onclick="nextQuestion()" id="next-btn" class="btn btn-primary" disabled>Nächste Frage</button>
                 </div>
