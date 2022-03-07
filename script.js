@@ -61,6 +61,8 @@ let questions = [
 let totalQuestions = questions.length;
 let currentQuestion = 0;
 let rightAnswers = 0;
+let AUDIO_SUCCESS = new Audio('./sound/success.mp3');
+let AUDIO_WRONG = new Audio('./sound/wrong.mp3');
 
 function init() {
     document.getElementById('total-questions').innerHTML = totalQuestions;
@@ -95,9 +97,13 @@ function answer(selection) {
     if (selection == questions[currentQuestion].right_answer) {
         document.getElementById(`answer-${selection}`).parentNode.classList.add('bg-success');
         rightAnswers++;
+
+        AUDIO_SUCCESS.play();
     } else {
         document.getElementById(`answer-${selection}`).parentNode.classList.add('bg-danger');
         document.getElementById(`answer-${questions[currentQuestion].right_answer}`).parentNode.classList.add('bg-success');
+
+        AUDIO_WRONG.play();
     }
 
     document.getElementById('next-btn').disabled = false;
@@ -109,6 +115,8 @@ function nextQuestion() {
     document.getElementById('next-btn').disabled = true;
     resetAnswerBtns();
     showQuestion();
+
+    stopAudio();
 }
 
 function resetAnswerBtns() {
@@ -138,4 +146,11 @@ function restartQuiz() {
     document.getElementById('question-body').style = 'display: block;';
 
     init();
+}
+
+function stopAudio() {
+    AUDIO_SUCCESS.pause();
+    AUDIO_SUCCESS.currentTime = 0;
+    AUDIO_WRONG.pause();
+    AUDIO_WRONG.currentTime = 0;
 }
