@@ -98,10 +98,14 @@ function answer(selection) {
         document.getElementById(`answer-${selection}`).parentNode.classList.add('bg-success');
         rightAnswers++;
 
+        disableOtherAnswerBtns(selection);
+
         AUDIO_SUCCESS.play();
     } else {
         document.getElementById(`answer-${selection}`).parentNode.classList.add('bg-danger');
         document.getElementById(`answer-${questions[currentQuestion].right_answer}`).parentNode.classList.add('bg-success');
+
+        disableOtherAnswerBtns(selection);
 
         AUDIO_WRONG.play();
     }
@@ -113,6 +117,8 @@ function nextQuestion() {
     currentQuestion++;
 
     document.getElementById('next-btn').disabled = true;
+
+    enableAnswerBtns();
     resetAnswerBtns();
     showQuestion();
 
@@ -153,4 +159,18 @@ function stopAudio() {
     AUDIO_SUCCESS.currentTime = 0;
     AUDIO_WRONG.pause();
     AUDIO_WRONG.currentTime = 0;
+}
+
+function disableOtherAnswerBtns(answer) {
+    for (let i = 1; i <= 4; i++) {
+        if (i != answer) {
+            document.getElementById(`answer-btn-${i}`).disabled = true;
+        }
+    }
+}
+
+function enableAnswerBtns() {
+    for (let i = 1; i <= 4; i++) {
+        document.getElementById(`answer-btn-${i}`).disabled = false;
+    }
 }
