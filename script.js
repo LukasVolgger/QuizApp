@@ -76,7 +76,11 @@ function showQuestion() {
 
         document.getElementById('right-answers').innerHTML = rightAnswers;
         document.getElementById('amount-of-questions').innerHTML = totalQuestions;
+
+        setProgressBar();
     } else {
+        setProgressBar();
+
         document.getElementById('current-question').innerHTML = currentQuestion + 1;
 
         document.getElementById('question').innerHTML = question.question;
@@ -116,4 +120,12 @@ function resetAnswerBtns() {
     document.getElementById('answer-3').parentNode.classList.remove('bg-success');
     document.getElementById('answer-4').parentNode.classList.remove('bg-danger');
     document.getElementById('answer-4').parentNode.classList.remove('bg-success');
+}
+
+function setProgressBar() {
+    let progress = (currentQuestion) / totalQuestions;
+    progress = Math.round(progress * 100);
+
+    document.getElementById('progress-bar').innerHTML = `${progress} %`;
+    document.getElementById('progress-bar').style = `width: ${progress}%;`;
 }
