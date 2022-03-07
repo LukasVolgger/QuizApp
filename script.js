@@ -129,3 +129,13 @@ function setProgressBar() {
     document.getElementById('progress-bar').innerHTML = `${progress} %`;
     document.getElementById('progress-bar').style = `width: ${progress}%;`;
 }
+
+function restartQuiz() {
+    currentQuestion = 0;
+    rightAnswers = 0;
+
+    document.getElementById('end-screen').style = 'display: none;';
+    document.getElementById('question-body').style = 'display: block;';
+
+    init();
+}
