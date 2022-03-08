@@ -29,6 +29,7 @@ nav {
     flex-direction: column;
     background-color: rgb(39, 52, 92);
     border-radius: 16px 0 0 16px;
+    padding-bottom: 16px;
 }
 
 nav img {

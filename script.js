@@ -167,9 +167,16 @@ function renderNavElements() {
 
     for (let i = 0; i < questionPool.length; i++) {
         container.innerHTML += `
-            <button id="nav-element-${i}" class="nav-element btns" onclick="showQuestions(${i}); closeOtherNavElements(${i})">${questionPool[i].category}</button>
+            <button id="nav-element-${i}" class="nav-element btns" onclick="switchQuestionPool(${i}); closeOtherNavElements(${i})">${questionPool[i].category}</button>
         `;
     }
+}
+
+function switchQuestionPool(selection) {
+    currentQuestionPool = selection;
+    currentQuestion = 0;
+
+    showQuestions(selection);
 }
 
 function closeOtherNavElements(element) {
