@@ -157,8 +157,20 @@ let AUDIO_SUCCESS = new Audio('./sound/success.mp3');
 let AUDIO_WRONG = new Audio('./sound/wrong.mp3');
 
 function init() {
+    renderStartScreen();
     renderNavElements();
     selectNavElement(0); // Start with first question pool
+}
+
+function renderStartScreen() {
+    let container = document.getElementById('quiz-render-container');
+    container.innerHTML = `
+        <div class="start-screen-container">
+            <h2>Willkommen zum <span class="question-pool-text">${questionPool[currentQuestionPool].category}</span> Quiz!</h2>
+            <h3>Bereit für die Herausforderung?</h3>
+            <button class="start-quiz-btn" onclick="showQuestions(${currentQuestionPool})">JETZT STARTEN</button>
+        </div>
+    `;
 }
 
 function renderNavElements() {
@@ -172,11 +184,58 @@ function renderNavElements() {
     }
 }
 
+function renderQuestions() {
+    let container = document.getElementById('quiz-render-container');
+    container.innerHTML = `
+        <div class="card-header">
+            <h5 class="card-title" id="question">Frage</h5>
+        </div>
+        <div id="end-screen" class="card-body" style="display: none;">
+            <div class="text-center">Quiz beendet!</div>
+            <div class="text-center">Du hast <b id="right-answers"></b> von <b id="amount-of-questions"></b> Fragen richtig beantwortet!</div>
+            <div class="end-screen-footer">
+                <button onclick="restartQuiz()" id="restart-btn" class="btn btn-primary">Erneut starten</button>
+            </div>
+        </div>
+
+        <div id="question-body" class="card-body">
+
+            <button id="answer-btn-1" class="card mb-2 quiz-answer-card" onclick="answer(1)">
+                <div class="answer-option-letter">A</div>
+                <div class="card-body question-answer-text" id="answer-1"></div>
+            </button>
+
+            <button id="answer-btn-2" class="card mb-2 quiz-answer-card" onclick="answer(2)">
+                <div class="answer-option-letter">B</div>
+                <div class="card-body question-answer-text" id="answer-2"></div>
+            </button>
+
+            <button id="answer-btn-3" class="card mb-2 quiz-answer-card" onclick="answer(3)">
+                <div class="answer-option-letter">C</div>
+                <div class="card-body question-answer-text" id="answer-3"></div>
+            </button>
+
+            <button id="answer-btn-4" class="card mb-2 quiz-answer-card" onclick="answer(4)">
+                    <div class="answer-option-letter">D</div>
+                    <div class="card-body question-answer-text" id="answer-4"></div>
+            </button>
+
+            <div class="question-footer">
+                <div>
+                    <b id="current-question">1</b> von <b id="total-questions">5</b> Fragen
+                </div>
+                <button onclick="nextQuestion()" id="next-btn" class="btn btn-primary" disabled>Nächste Frage</button>
+            </div>
+        </div>
+    `;
+}
+
 function switchQuestionPool(selection) {
     currentQuestionPool = selection;
     currentQuestion = 0;
 
-    showQuestions(selection);
+    selectNavElement(selection);
+    renderStartScreen();
 }
 
 function closeOtherNavElements(element) {
@@ -188,6 +247,7 @@ function closeOtherNavElements(element) {
 }
 
 function showQuestions(selection) {
+    renderQuestions();
     selectNavElement(selection);
 
     let totalQuestions = questionPool[selection].questions.length;

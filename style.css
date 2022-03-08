@@ -33,6 +33,7 @@ nav {
 }
 
 nav img {
+    width: 98px;
     padding: 16px;
 }
 
@@ -79,8 +80,29 @@ main {
 }
 
 .quiz-card {
+    height: 100%;
     width: 30rem;
     border-radius: 0 16px 16px 0 !important;
+}
+
+.start-screen-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    text-align: center;
+    gap: 16px;
+    padding: 16px;
+    font-family: 'PT Sans', sans-serif;
+}
+
+.start-screen-container h2 {
+    font-weight: 700;
+}
+
+.question-pool-text {
+    color: red;
 }
 
 .card-header {
