@@ -11,12 +11,29 @@ main {
 }
 
 .quiz-answer-card {
+    flex-direction: row !important;
+    align-items: center;
     width: 100%;
 }
 
 .quiz-answer-card:hover {
     cursor: pointer;
     background-color: rgba(0, 0, 0, 0.05);
+}
+
+.answer-option-letter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    font-size: 24px;
+    font-weight: 500;
+    background-color: rgb(133 133 133 / 50%);
+}
+
+.question-answer-text {
+    text-align: start;
 }
 
 .question-footer {
@@ -27,9 +44,28 @@ main {
     padding-top: 16px;
 }
 
-.bg-success,
-.bg-danger {
-    color: white;
+.bg-right-answer {
+    background-color: rgb(183, 247, 153) !important;
+}
+
+.bg-wrong-answer {
+    background-color: rgb(255, 163, 164) !important;
+}
+
+.bg-right-answer-blinking {
+    animation: blinking-bg 1s infinite;
+    color: black;
+}
+
+@-webkit-keyframes blinking-bg {
+    0%,
+    49% {
+        background-color: rgb(183, 247, 153);
+    }
+    50%,
+    100% {
+        background-color: rgb(255, 255, 255);
+    }
 }
 
 .text-center {

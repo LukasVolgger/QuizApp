@@ -95,19 +95,19 @@ function showQuestion() {
 
 function answer(selection) {
     if (selection == questions[currentQuestion].right_answer) {
-        document.getElementById(`answer-${selection}`).parentNode.classList.add('bg-success');
+        document.getElementById(`answer-btn-${selection}`).classList.add('bg-right-answer');
         rightAnswers++;
 
         disableOtherAnswerBtns(selection);
 
-        AUDIO_SUCCESS.play();
+        // AUDIO_SUCCESS.play();
     } else {
-        document.getElementById(`answer-${selection}`).parentNode.classList.add('bg-danger');
-        document.getElementById(`answer-${questions[currentQuestion].right_answer}`).parentNode.classList.add('bg-success');
+        document.getElementById(`answer-btn-${selection}`).classList.add('bg-wrong-answer');
+        document.getElementById(`answer-btn-${questions[currentQuestion].right_answer}`).classList.add('bg-right-answer-blinking');
 
         disableOtherAnswerBtns(selection);
 
-        AUDIO_WRONG.play();
+        // AUDIO_WRONG.play();
     }
 
     document.getElementById('next-btn').disabled = false;
@@ -126,14 +126,18 @@ function nextQuestion() {
 }
 
 function resetAnswerBtns() {
-    document.getElementById('answer-1').parentNode.classList.remove('bg-danger');
-    document.getElementById('answer-1').parentNode.classList.remove('bg-success');
-    document.getElementById('answer-2').parentNode.classList.remove('bg-danger');
-    document.getElementById('answer-2').parentNode.classList.remove('bg-success');
-    document.getElementById('answer-3').parentNode.classList.remove('bg-danger');
-    document.getElementById('answer-3').parentNode.classList.remove('bg-success');
-    document.getElementById('answer-4').parentNode.classList.remove('bg-danger');
-    document.getElementById('answer-4').parentNode.classList.remove('bg-success');
+    document.getElementById('answer-1').parentNode.classList.remove('bg-wrong-answer');
+    document.getElementById('answer-1').parentNode.classList.remove('bg-right-answer');
+    document.getElementById('answer-1').parentNode.classList.remove('bg-right-answer-blinking');
+    document.getElementById('answer-2').parentNode.classList.remove('bg-wrong-answer');
+    document.getElementById('answer-2').parentNode.classList.remove('bg-right-answer');
+    document.getElementById('answer-2').parentNode.classList.remove('bg-right-answer-blinking');
+    document.getElementById('answer-3').parentNode.classList.remove('bg-wrong-answer');
+    document.getElementById('answer-3').parentNode.classList.remove('bg-right-answer');
+    document.getElementById('answer-3').parentNode.classList.remove('bg-right-answer-blinking');
+    document.getElementById('answer-4').parentNode.classList.remove('bg-wrong-answer');
+    document.getElementById('answer-4').parentNode.classList.remove('bg-right-answer');
+    document.getElementById('answer-4').parentNode.classList.remove('bg-right-answer-blinking');
 }
 
 function setProgressBar() {
