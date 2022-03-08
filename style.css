@@ -1,6 +1,46 @@
+body {
+    display: flex;
+    font-family: 'Rubik', sans-serif !important;
+    height: 100vh;
+    background-color: rgb(254, 250, 239) !important;
+}
+
+.progress {
+    position: absolute;
+    left: 0;
+    right: 0;
+}
+
+nav {
+    background-color: rgb(39, 52, 92);
+    border-radius: 16px 0 0 16px;
+    padding: 16px 32px;
+}
+
+.nav-links-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 48px;
+    font-size: 24px;
+    color: white;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.quiz-section {
+    display: flex;
+    gap: 128px;
+    border-radius: 8px;
+    background-color: #f2f2f2;
+}
+
 main {
-    height: calc(100vh - 52px);
-    background-color: rgb(0, 122, 255) !important;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -8,6 +48,13 @@ main {
 
 .quiz-card {
     width: 30rem;
+    border-radius: 0 16px 16px 0 !important;
+}
+
+.card-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .quiz-answer-card {
@@ -57,7 +104,7 @@ main {
     color: black;
 }
 
-@-webkit-keyframes blinking-bg {
+@keyframes blinking-bg {
     0%,
     49% {
         background-color: rgb(183, 247, 153);

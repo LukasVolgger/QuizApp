@@ -8,67 +8,74 @@
     <title>QuizApp</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <!-- Import Google Fonts START -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Import Google Fonts END -->
     <script src="script.js"></script>
 </head>
 
 <body onload="init()">
-
-    <header>
-        <nav class="navbar navbar-light bg-light">
-            <div class="container-fluid">
-                <span class="navbar-brand mb-0 h1">QuizApp</span>
-            </div>
-        </nav>
-    </header>
-
-    <main>
-        <div class="card quiz-card">
-            <img src="img/education_background.jpg" class="card-img-top" alt="Background">
-            <div class="progress">
-                <div id="progress-bar" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-            </div>
-            <div id="end-screen" class="card-body" style="display: none;">
-                <div class="text-center">Quiz beendet!</div>
-                <div class="text-center">Du hast <b id="right-answers"></b> von <b id="amount-of-questions"></b> Fragen richtig beantwortet!</div>
-                <div class="end-screen-footer">
-                    <button onclick="restartQuiz()" id="restart-btn" class="btn btn-primary">Erneut starten</button>
+    <div class="progress">
+        <div id="progress-bar" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+    </div>
+    <div class="wrapper">
+        <div class="quiz-section">
+            <nav>
+                <img src="img/logo.png" alt="Logo">
+                <div class="nav-links-container">
+                    <div>HTML</div>
+                    <div>CSS</div>
+                    <div>JS</div>
                 </div>
-            </div>
-
-            <div id="question-body" class="card-body">
-
-                <h5 class="card-title" id="question">Frage</h5>
-
-                <button id="answer-btn-1" class="card mb-2 quiz-answer-card" onclick="answer(1)">
-                    <div class="answer-option-letter">A</div>
-                    <div class="card-body question-answer-text" id="answer-1"></div>
-                </button>
-
-                <button id="answer-btn-2" class="card mb-2 quiz-answer-card" onclick="answer(2)">
-                    <div class="answer-option-letter">B</div>
-                    <div class="card-body question-answer-text" id="answer-2"></div>
-                </button>
-
-                <button id="answer-btn-3" class="card mb-2 quiz-answer-card" onclick="answer(3)">
-                    <div class="answer-option-letter">C</div>
-                    <div class="card-body question-answer-text" id="answer-3"></div>
-                </button>
-
-                <button id="answer-btn-4" class="card mb-2 quiz-answer-card" onclick="answer(4)">
-                    <div class="answer-option-letter">D</div>
-                    <div class="card-body question-answer-text" id="answer-4"></div>
-                </button>
-
-                <div class="question-footer">
-                    <div>
-                        <b id="current-question">1</b> von <b id="total-questions">5</b> Fragen
+            </nav>
+            <main>
+                <div class="card quiz-card">
+                    <div class="card-header">
+                        <h5 class="card-title" id="question">Frage</h5>
                     </div>
-                    <button onclick="nextQuestion()" id="next-btn" class="btn btn-primary" disabled>Nächste Frage</button>
-                </div>
-            </div>
-        </div>
-    </main>
+                    <div id="end-screen" class="card-body" style="display: none;">
+                        <div class="text-center">Quiz beendet!</div>
+                        <div class="text-center">Du hast <b id="right-answers"></b> von <b id="amount-of-questions"></b> Fragen richtig beantwortet!</div>
+                        <div class="end-screen-footer">
+                            <button onclick="restartQuiz()" id="restart-btn" class="btn btn-primary">Erneut starten</button>
+                        </div>
+                    </div>
 
+                    <div id="question-body" class="card-body">
+
+                        <button id="answer-btn-1" class="card mb-2 quiz-answer-card" onclick="answer(1)">
+                            <div class="answer-option-letter">A</div>
+                            <div class="card-body question-answer-text" id="answer-1"></div>
+                        </button>
+
+                        <button id="answer-btn-2" class="card mb-2 quiz-answer-card" onclick="answer(2)">
+                            <div class="answer-option-letter">B</div>
+                            <div class="card-body question-answer-text" id="answer-2"></div>
+                        </button>
+
+                        <button id="answer-btn-3" class="card mb-2 quiz-answer-card" onclick="answer(3)">
+                            <div class="answer-option-letter">C</div>
+                            <div class="card-body question-answer-text" id="answer-3"></div>
+                        </button>
+
+                        <button id="answer-btn-4" class="card mb-2 quiz-answer-card" onclick="answer(4)">
+                                <div class="answer-option-letter">D</div>
+                                <div class="card-body question-answer-text" id="answer-4"></div>
+                        </button>
+
+                        <div class="question-footer">
+                            <div>
+                                <b id="current-question">1</b> von <b id="total-questions">5</b> Fragen
+                            </div>
+                            <button onclick="nextQuestion()" id="next-btn" class="btn btn-primary" disabled>Nächste Frage</button>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
 </body>
 
 </html>
