@@ -167,7 +167,7 @@ function renderStartScreen() {
     container.innerHTML = `
         <div class="start-screen-container">
             <h2>Willkommen zum <span class="question-pool-text">${questionPool[currentQuestionPool].category}</span> Quiz!</h2>
-            <h3>Bereit für die Herausforderung?</h3>
+            <h4>Bereit für die Herausforderung?</h4>
             <button class="start-quiz-btn" onclick="showQuestions(${currentQuestionPool})">JETZT STARTEN</button>
         </div>
     `;
@@ -187,8 +187,8 @@ function renderNavElements() {
 function renderQuestions() {
     let container = document.getElementById('quiz-render-container');
     container.innerHTML = `
-        <div class="card-header">
-            <h5 class="card-title" id="question">Frage</h5>
+        <div class="question-header">
+            <h5 class="question-text" id="question">Frage</h5>
         </div>
         <div id="end-screen" class="card-body" style="display: none;">
             <div class="text-center">Quiz beendet!</div>
@@ -198,27 +198,28 @@ function renderQuestions() {
             </div>
         </div>
 
-        <div id="question-body" class="card-body">
+        <div id="question-body" class="question-body">
+            <div class="answers">
+                <button id="answer-btn-1" class="mb-2 answer-btn" onclick="answer(1)">
+                    <div class="answer-option-letter">A</div>
+                    <div class="answer-text" id="answer-1"></div>
+                </button>
 
-            <button id="answer-btn-1" class="card mb-2 quiz-answer-card" onclick="answer(1)">
-                <div class="answer-option-letter">A</div>
-                <div class="card-body question-answer-text" id="answer-1"></div>
-            </button>
+                <button id="answer-btn-2" class="mb-2 answer-btn" onclick="answer(2)">
+                    <div class="answer-option-letter">B</div>
+                    <div class="answer-text" id="answer-2"></div>
+                </button>
 
-            <button id="answer-btn-2" class="card mb-2 quiz-answer-card" onclick="answer(2)">
-                <div class="answer-option-letter">B</div>
-                <div class="card-body question-answer-text" id="answer-2"></div>
-            </button>
+                <button id="answer-btn-3" class="mb-2 answer-btn" onclick="answer(3)">
+                    <div class="answer-option-letter">C</div>
+                    <div class="answer-text" id="answer-3"></div>
+                </button>
 
-            <button id="answer-btn-3" class="card mb-2 quiz-answer-card" onclick="answer(3)">
-                <div class="answer-option-letter">C</div>
-                <div class="card-body question-answer-text" id="answer-3"></div>
-            </button>
-
-            <button id="answer-btn-4" class="card mb-2 quiz-answer-card" onclick="answer(4)">
-                    <div class="answer-option-letter">D</div>
-                    <div class="card-body question-answer-text" id="answer-4"></div>
-            </button>
+                <button id="answer-btn-4" class="mb-2 answer-btn" onclick="answer(4)">
+                        <div class="answer-option-letter">D</div>
+                        <div class="answer-text" id="answer-4"></div>
+                </button>
+            </div>
 
             <div class="question-footer">
                 <div>
@@ -343,7 +344,7 @@ function restartQuiz() {
     document.getElementById('end-screen').style = 'display: none;';
     document.getElementById('question-body').style = 'display: block;';
 
-    init();
+    showQuestions(currentQuestionPool);
 }
 
 function stopAudio() {
