@@ -5,24 +5,55 @@ body {
     background-color: rgb(254, 250, 239) !important;
 }
 
+.btns {
+    display: flex;
+    background-color: transparent;
+    border: none;
+}
+
 .progress {
     position: absolute;
     left: 0;
     right: 0;
+    border-radius: 0 !important;
+    background-color: rgb(174, 174, 174) !important;
+}
+
+.progress-bar {
+    background-color: rgb(39, 52, 92) !important;
+    border-radius: 0 8px 8px 0;
 }
 
 nav {
-    background-color: rgb(39, 52, 92);
-    border-radius: 16px 0 0 16px;
-    padding: 16px 32px;
-}
-
-.nav-links-container {
     display: flex;
     flex-direction: column;
+    background-color: rgb(39, 52, 92);
+    border-radius: 16px 0 0 16px;
+}
+
+nav img {
+    padding: 16px;
+}
+
+.nav-elements-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
     gap: 16px;
     margin-top: 48px;
     font-size: 24px;
+    color: white;
+}
+
+.nav-element {
+    padding: 0 16px 0 16px;
+    border-left: 4px solid transparent;
+    color: #9d9d9d;
+}
+
+.nav-element-selected {
+    border-left: 4px solid white;
+    background-color: rgb(255 255 255 / 30%);
     color: white;
 }
 
