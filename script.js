@@ -155,6 +155,7 @@ let currentQuestion = 0;
 let rightAnswers = 0;
 let AUDIO_SUCCESS = new Audio('./sound/success.mp3');
 let AUDIO_WRONG = new Audio('./sound/wrong.mp3');
+let mobileNavIsOpen = false;
 
 function init() {
     renderStartScreen();
@@ -163,6 +164,8 @@ function init() {
 }
 
 function renderStartScreen() {
+    document.getElementById('progress').classList.add('d-none');
+    document.getElementById('mobile-menu-btn').classList.remove('d-none');
     let container = document.getElementById('quiz-render-container');
     container.innerHTML = `
         <div class="start-screen-container">
@@ -179,7 +182,7 @@ function renderNavElements() {
 
     for (let i = 0; i < questionPool.length; i++) {
         container.innerHTML += `
-            <button id="nav-element-${i}" class="nav-element btns" onclick="switchQuestionPool(${i}); closeOtherNavElements(${i})">${questionPool[i].category}</button>
+            <button id="nav-element-${i}" class="nav-element btns" onclick="switchQuestionPool(${i}); closeOtherNavElements(${i}); toggleMobileMenu();">${questionPool[i].category}</button>
         `;
     }
 }
@@ -215,16 +218,23 @@ function renderQuestions() {
             </div>
 
             <div class="question-footer">
-                <div>
-                    <b id="current-question">1</b> von <b id="total-questions">5</b> Fragen
+                <button class="mobile-close-btn" onclick="init()">
+                    <img src="./img/icons/close.svg" alt="Close">
+                </button>
+                
+                <div class="question-control">
+                    <div>
+                        <b id="current-question">1</b> von <b id="total-questions">5</b> Fragen
+                    </div>
+                    <button onclick="nextQuestion()" id="next-btn" class="btn btn-primary btns" disabled>Nächste Frage</button>
                 </div>
-                <button onclick="nextQuestion()" id="next-btn" class="btn btn-primary btns" disabled>Nächste Frage</button>
             </div>
         </div>
     `;
 }
 
 function renderEndScreen() {
+    document.getElementById('mobile-menu-btn').classList.remove('d-none');
     let container = document.getElementById('quiz-render-container');
     container.innerHTML = `
         <div class="end-screen-body">
@@ -257,6 +267,8 @@ function closeOtherNavElements(element) {
 function showQuestions(selection) {
     renderQuestions();
     selectNavElement(selection);
+    document.getElementById('progress').classList.remove('d-none');
+    document.getElementById('mobile-menu-btn').classList.add('d-none');
 
     let totalQuestions = questionPool[selection].questions.length;
     let question = questionPool[selection].questions[currentQuestion];
@@ -372,5 +384,17 @@ function enableAnswerBtns() {
     for (let i = 1; i <= 4; i++) {
         document.getElementById(`answer-btn-${i}`).disabled = false;
         document.getElementById(`answer-btn-${i}`).classList.remove('disable-pointer-ev');
+    }
+}
+
+function toggleMobileMenu() {
+    if (document.body.offsetWidth <= 600) {
+        if (mobileNavIsOpen == false) {
+            mobileNavIsOpen = !mobileNavIsOpen;
+            document.getElementById('nav').classList.add('nav-mobile-visible');
+        } else {
+            mobileNavIsOpen = !mobileNavIsOpen;
+            document.getElementById('nav').classList.remove('nav-mobile-visible');
+        }
     }
 }

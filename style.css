@@ -12,6 +12,10 @@ body {
     font-family: 'Rubik', sans-serif !important;
 }
 
+.d-none {
+    display: none;
+}
+
 .disable-pointer-ev {
     pointer-events: none;
 }
@@ -29,10 +33,24 @@ body {
     border-radius: 0 8px 8px 0;
 }
 
+.mobile-menu-btn {
+    z-index: 1000;
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background-color: transparent;
+    border: none;
+}
+
+.mobile-menu-btn img {
+    width: 32px;
+}
+
 nav {
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
     background-color: rgb(39, 52, 92);
     border-radius: 16px 0 0 16px;
     padding-bottom: 16px;
@@ -78,7 +96,7 @@ nav img {
     border-radius: 16px;
     background-color: #f2f2f2;
     box-shadow: 0px 0px 4px 2px rgb(0 0 0 / 25%);
-    width: 80vw;
+    width: 50vw;
     height: 80vh;
 }
 
@@ -143,7 +161,7 @@ main {
 }
 
 .question-pool-text {
-    color: red;
+    color: rgb(255, 77, 14);
 }
 
 .question-header {
@@ -165,6 +183,7 @@ main {
     flex: 1 1 auto;
     padding: 1rem 1rem;
     background-color: #f2f2f2;
+    border-radius: 0 0 16px 0;
 }
 
 .answer-btn {
@@ -201,9 +220,18 @@ main {
 
 .question-footer {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
     padding-top: 16px;
+    gap: 32px;
+}
+
+.question-control {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
 }
 
 .bg-right-answer {
@@ -238,6 +266,23 @@ main {
     }
 }
 
+.mobile-close-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 64px;
+    height: 64px;
+    border: none;
+    border-radius: 50%;
+    background-color: white;
+    box-shadow: 0px 1px 2px 1px rgb(0 0 0 / 15%);
+}
+
+.mobile-close-btn img {
+    width: 100%;
+    padding: 8px;
+}
+
 .end-screen-body {
     display: flex;
     flex-direction: column;
@@ -261,7 +306,7 @@ main {
 
 .score-text {
     display: flex;
-    gap: 32px;
+    gap: 16px;
     font-weight: 700;
     color: rgb(255, 146, 49);
     margin-bottom: 32px;
@@ -276,3 +321,121 @@ main {
     justify-content: center;
     margin-bottom: 16px;
 }
+
+footer {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: 16px;
+    font-size: 12px;
+    color: #9d9d9d;
+    text-align: center;
+}
+
+
+/* Extra extra small devices (phones, 360px and down) */
+
+@media only screen and (max-width: 360px) {
+    .quiz-section {
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+    }
+    nav {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        z-index: 999;
+        border-radius: 0;
+    }
+    .nav-mobile {
+        transform: translateX(-100%);
+        transition: all 225ms ease-in-out;
+    }
+    .nav-mobile-visible {
+        transform: translateX(0%);
+        transition: all 225ms ease-in-out;
+    }
+}
+
+
+/* Extra small devices (phones, 360px and up) */
+
+@media only screen and (min-width: 360px) {
+    .quiz-section {
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+    }
+    nav {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        z-index: 999;
+        border-radius: 0;
+    }
+    .nav-mobile {
+        transform: translateX(-100%);
+        transition: all 225ms ease-in-out;
+    }
+    .nav-mobile-visible {
+        transform: translateX(0%);
+        transition: all 225ms ease-in-out;
+    }
+    nav img {
+        width: 128px;
+    }
+}
+
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+
+@media only screen and (min-width: 600px) {
+    .mobile-menu-icon,
+    .mobile-close-btn {
+        display: none;
+    }
+    .quiz-section {
+        width: 80vw;
+        height: 80vh;
+        border-radius: 16px;
+    }
+    nav {
+        position: unset;
+        top: unset;
+        right: unset;
+        bottom: unset;
+        left: unset;
+        width: 20vw;
+        z-index: 999;
+        border-radius: 16px 0 0 16px;
+    }
+    .nav-mobile {
+        transform: translateX(0%);
+    }
+}
+
+
+/* Medium devices (landscape tablets, 768px and up) */
+
+@media only screen and (min-width: 768px) {}
+
+
+/* Large devices (laptops/desktops, 992px and up) */
+
+@media only screen and (min-width: 992px) {
+    .quiz-section {
+        width: 60vw;
+    }
+}
+
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+
+@media only screen and (min-width: 1200px) {}
