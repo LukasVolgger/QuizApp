@@ -26,4 +26,6 @@ Download the source code or clone the repository on your local computer by click
 <h3>3. Start the Project</h3>
 Navigate to the location on your computer where you downloaded/cloned the code. In the project directory, open the <b>index.html</b> file with a web browser.
 
+![readme_installation](https://user-images.githubusercontent.com/55922592/157415952-9cfe1da5-0872-4bf1-ad45-1bd942b9f7a9.PNG)
+
 <h2 id="license">License</h2>
