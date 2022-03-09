@@ -11,6 +11,10 @@ body {
     border: none;
 }
 
+.disable-pointer-ev {
+    pointer-events: none;
+}
+
 .progress {
     position: absolute;
     left: 0;
@@ -81,11 +85,15 @@ main {
     justify-content: center;
     align-items: center;
     width: 100%;
+    background-image: url(img/brain_bg.jpg);
+    background-position: center;
+    background-size: cover;
 }
 
 .quiz-card {
     display: flex;
     flex-direction: column;
+    position: relative;
     width: 100%;
     height: 100%;
 }
@@ -107,6 +115,29 @@ main {
     margin: 0;
 }
 
+.start-quiz-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    position: absolute;
+    bottom: 48px;
+    right: 48px;
+    border: none;
+    border-radius: 6px;
+    background-color: rgb(255, 77, 14);
+    color: white;
+    padding: 8px 16px 8px 16px;
+}
+
+.start-quiz-btn:hover {
+    background-color: rgb(255, 104, 50);
+}
+
+.start-quiz-btn img {
+    width: 18px;
+}
+
 .question-pool-text {
     color: red;
 }
@@ -119,7 +150,7 @@ main {
 }
 
 .question-text {
-    word-break: break-all;
+    word-wrap: break-word;
     margin: 0;
 }
 
@@ -158,7 +189,7 @@ main {
 
 .answer-text {
     text-align: start;
-    word-break: break-all;
+    word-wrap: break-word;
     flex: 1 1 auto;
     padding: 1rem 1rem;
 }
@@ -171,11 +202,19 @@ main {
 }
 
 .bg-right-answer {
-    background-color: rgb(183, 247, 153) !important;
+    background-color: rgb(183, 247, 153);
+}
+
+.bg-right-answer-option-letter {
+    background-color: rgb(76, 191, 26);
 }
 
 .bg-wrong-answer {
-    background-color: rgb(255, 163, 164) !important;
+    background-color: rgb(255, 163, 164);
+}
+
+.bg-wrong-answer-option-letter {
+    background-color: rgb(249, 23, 24);
 }
 
 .bg-right-answer-blinking {

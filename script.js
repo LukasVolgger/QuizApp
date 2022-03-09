@@ -168,7 +168,7 @@ function renderStartScreen() {
         <div class="start-screen-container">
             <h2>Willkommen zum <span class="question-pool-text">${questionPool[currentQuestionPool].category}</span> Quiz!</h2>
             <h4>Bereit für die Herausforderung?</h4>
-            <button class="start-quiz-btn" onclick="showQuestions(${currentQuestionPool})">JETZT STARTEN</button>
+            <button class="start-quiz-btn" onclick="showQuestions(${currentQuestionPool})">JETZT STARTEN <img src="./img/icons/arrow_right.svg" alt="Arrow Right"></button>
         </div>
     `;
 }
@@ -201,22 +201,22 @@ function renderQuestions() {
         <div id="question-body" class="question-body">
             <div class="answers">
                 <button id="answer-btn-1" class="mb-2 answer-btn" onclick="answer(1)">
-                    <div class="answer-option-letter">A</div>
+                    <div id="answer-option-letter-1" class="answer-option-letter">A</div>
                     <div class="answer-text" id="answer-1"></div>
                 </button>
 
                 <button id="answer-btn-2" class="mb-2 answer-btn" onclick="answer(2)">
-                    <div class="answer-option-letter">B</div>
+                    <div id="answer-option-letter-2" class="answer-option-letter">B</div>
                     <div class="answer-text" id="answer-2"></div>
                 </button>
 
                 <button id="answer-btn-3" class="mb-2 answer-btn" onclick="answer(3)">
-                    <div class="answer-option-letter">C</div>
+                    <div id="answer-option-letter-3" class="answer-option-letter">C</div>
                     <div class="answer-text" id="answer-3"></div>
                 </button>
 
                 <button id="answer-btn-4" class="mb-2 answer-btn" onclick="answer(4)">
-                        <div class="answer-option-letter">D</div>
+                        <div id="answer-option-letter-4" class="answer-option-letter">D</div>
                         <div class="answer-text" id="answer-4"></div>
                 </button>
             </div>
@@ -283,16 +283,21 @@ function selectNavElement(element) {
 }
 
 function answer(selection) {
+    // Right answer
     if (selection == questionPool[currentQuestionPool].questions[currentQuestion].right_answer) {
         document.getElementById(`answer-btn-${selection}`).classList.add('bg-right-answer');
+        document.getElementById(`answer-option-letter-${selection}`).classList.add('bg-right-answer-option-letter');
         rightAnswers++;
 
         disableOtherAnswerBtns(selection);
 
         // AUDIO_SUCCESS.play();
+
+        // Wrong answer
     } else {
         document.getElementById(`answer-btn-${selection}`).classList.add('bg-wrong-answer');
         document.getElementById(`answer-btn-${questionPool[currentQuestionPool].questions[currentQuestion].right_answer}`).classList.add('bg-right-answer-blinking');
+        document.getElementById(`answer-option-letter-${selection}`).classList.add('bg-wrong-answer-option-letter');
 
         disableOtherAnswerBtns(selection);
 
@@ -315,18 +320,13 @@ function nextQuestion() {
 }
 
 function resetAnswerBtns() {
-    document.getElementById('answer-1').parentNode.classList.remove('bg-wrong-answer');
-    document.getElementById('answer-1').parentNode.classList.remove('bg-right-answer');
-    document.getElementById('answer-1').parentNode.classList.remove('bg-right-answer-blinking');
-    document.getElementById('answer-2').parentNode.classList.remove('bg-wrong-answer');
-    document.getElementById('answer-2').parentNode.classList.remove('bg-right-answer');
-    document.getElementById('answer-2').parentNode.classList.remove('bg-right-answer-blinking');
-    document.getElementById('answer-3').parentNode.classList.remove('bg-wrong-answer');
-    document.getElementById('answer-3').parentNode.classList.remove('bg-right-answer');
-    document.getElementById('answer-3').parentNode.classList.remove('bg-right-answer-blinking');
-    document.getElementById('answer-4').parentNode.classList.remove('bg-wrong-answer');
-    document.getElementById('answer-4').parentNode.classList.remove('bg-right-answer');
-    document.getElementById('answer-4').parentNode.classList.remove('bg-right-answer-blinking');
+    for (let i = 1; i <= 4; i++) {
+        document.getElementById(`answer-btn-${i}`).classList.remove('bg-wrong-answer');
+        document.getElementById(`answer-btn-${i}`).classList.remove('bg-right-answer');
+        document.getElementById(`answer-btn-${i}`).classList.remove('bg-right-answer-blinking');
+        document.getElementById(`answer-option-letter-${i}`).classList.remove('bg-right-answer-option-letter');
+        document.getElementById(`answer-option-letter-${i}`).classList.remove('bg-wrong-answer-option-letter');
+    }
 }
 
 function setProgressBar(totalQuestions) {
@@ -356,6 +356,8 @@ function stopAudio() {
 
 function disableOtherAnswerBtns(answer) {
     for (let i = 1; i <= 4; i++) {
+        document.getElementById(`answer-btn-${i}`).classList.add('disable-pointer-ev');
+
         if (i != answer) {
             document.getElementById(`answer-btn-${i}`).disabled = true;
         }
@@ -365,5 +367,6 @@ function disableOtherAnswerBtns(answer) {
 function enableAnswerBtns() {
     for (let i = 1; i <= 4; i++) {
         document.getElementById(`answer-btn-${i}`).disabled = false;
+        document.getElementById(`answer-btn-${i}`).classList.remove('disable-pointer-ev');
     }
 }
