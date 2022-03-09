@@ -166,9 +166,9 @@ function renderStartScreen() {
     let container = document.getElementById('quiz-render-container');
     container.innerHTML = `
         <div class="start-screen-container">
-            <h2>Willkommen zum <span class="question-pool-text">${questionPool[currentQuestionPool].category}</span> Quiz!</h2>
-            <h4>Bereit für die Herausforderung?</h4>
-            <button class="start-quiz-btn" onclick="showQuestions(${currentQuestionPool})">JETZT STARTEN <img src="./img/icons/arrow_right.svg" alt="Arrow Right"></button>
+            <h1>Willkommen zum <span class="question-pool-text">${questionPool[currentQuestionPool].category}</span> Quiz!</h1>
+            <h3>Bereit für die Herausforderung?</h3>
+            <button class="start-quiz-btn btns" onclick="showQuestions(${currentQuestionPool})">JETZT STARTEN <img src="./img/icons/arrow_right.svg" alt="Arrow Right"></button>
         </div>
     `;
 }
@@ -189,13 +189,6 @@ function renderQuestions() {
     container.innerHTML = `
         <div class="question-header">
             <h5 class="question-text" id="question">Frage</h5>
-        </div>
-        <div id="end-screen" class="card-body" style="display: none;">
-            <div class="text-center">Quiz beendet!</div>
-            <div class="text-center">Du hast <b id="right-answers"></b> von <b id="amount-of-questions"></b> Fragen richtig beantwortet!</div>
-            <div class="end-screen-footer">
-                <button onclick="restartQuiz()" id="restart-btn" class="btn btn-primary">Erneut starten</button>
-            </div>
         </div>
 
         <div id="question-body" class="question-body">
@@ -225,7 +218,21 @@ function renderQuestions() {
                 <div>
                     <b id="current-question">1</b> von <b id="total-questions">5</b> Fragen
                 </div>
-                <button onclick="nextQuestion()" id="next-btn" class="btn btn-primary" disabled>Nächste Frage</button>
+                <button onclick="nextQuestion()" id="next-btn" class="btn btn-primary btns" disabled>Nächste Frage</button>
+            </div>
+        </div>
+    `;
+}
+
+function renderEndScreen() {
+    let container = document.getElementById('quiz-render-container');
+    container.innerHTML = `
+        <div class="end-screen-body">
+            <img src="./img/brain_result.png" alt="Brain Result" class="end-screen-result-img">
+            <h3 class="end-screen-headline"><span class="question-pool-text">${questionPool[currentQuestionPool].category}</span> QUIZ <br>ABGESCHLOSSEN</h3>
+            <h3 class="score-text">DEIN ERGEBNIS <b class="score-result"><span id="right-answers"></span> / <span id="amount-of-questions"></span></b></h3>
+            <div class="end-screen-footer">
+                <button onclick="restartQuiz()" id="restart-btn" class="btn btn-primary btns">Erneut starten</button>
             </div>
         </div>
     `;
@@ -256,9 +263,9 @@ function showQuestions(selection) {
 
     document.getElementById('total-questions').innerHTML = totalQuestions;
 
+    // If no more questions are left
     if (currentQuestion >= totalQuestions) {
-        document.getElementById('end-screen').style = 'display: block;';
-        document.getElementById('question-body').style = 'display: none;';
+        renderEndScreen();
 
         document.getElementById('right-answers').innerHTML = rightAnswers;
         document.getElementById('amount-of-questions').innerHTML = totalQuestions;
@@ -340,9 +347,6 @@ function setProgressBar(totalQuestions) {
 function restartQuiz() {
     currentQuestion = 0;
     rightAnswers = 0;
-
-    document.getElementById('end-screen').style = 'display: none;';
-    document.getElementById('question-body').style = 'display: block;';
 
     showQuestions(currentQuestionPool);
 }
