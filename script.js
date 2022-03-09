@@ -222,7 +222,7 @@ function renderQuestions() {
                     <img src="./img/icons/close.svg" alt="Close">
                 </button>
                 
-                <div class="question-control">
+                <div class="question-footer-subcontainer">
                     <div>
                         <b id="current-question">1</b> von <b id="total-questions">5</b> Fragen
                     </div>
