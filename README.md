@@ -15,15 +15,19 @@ Here is an overview of the most important functions of the project. Click on the
 
 <br>
 <details><summary><b>Available Languages</b></summary>
-- German<br>
+  
+- [X] German<br>
+  
 </details>
 
 <details><summary><b>Functionality</b></summary>
-- Fully playable <br>
-- Responsive Webdesign <br>
-- Depending on whether the question was answered correctly or incorrectly, a tone is played <br>
-- If a question is answered incorrectly, the correct answer will be highlighted <br>
-- More categories, questions and answers can easily be added or changed in questionpool.js
+  
+- [X] Fully playable
+- [X] Responsive Webdesign
+- [X] Depending on whether the question was answered correctly or incorrectly, a tone is played
+- [X] If a question is answered incorrectly, the correct answer will be highlighted
+- [X] More categories, questions and answers can easily be added or changed in questionpool.js
+  
 </details>
 
 <h2 id="preview">Preview</h2>
